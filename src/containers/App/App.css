@@ -1,0 +1,56 @@
+@import '~antd/dist/antd.css';
+
+html {
+  font-size: 12px;
+  font-family: -apple-system,PingFang SC,Hiragino Sans GB,Arial,Microsoft YaHei,Helvetica Neue,sans-serif;
+  text-rendering: optimizeLegibility;
+  background-color: #f4f5f5;
+  color: #333;
+  word-break: break-all;
+}
+
+body {
+  background-color: #f4f5f5;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  position: relative;
+  height: 5rem;
+}
+
+.App-body {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 960px;
+}
+
+.welcome-view {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.767rem;
+}
+
+.category-nav {
+  background-color: #db1f00;
+  width: 140px;
+  position: fixed;
+  top: 6.66rem;
+}
+
+.main {
+  background-color: #08c6a7;
+  width: 560px;
+  margin-left: 13rem;
+}
+
+.sidebar {
+  background-color: #e3e001;
+  width: 19.2rem;
+  box-sizing: border-box;
+}

@@ -1,0 +1,105 @@
+.App-header {
+  position: relative;
+  height: 5rem;
+}
+
+.main-header {
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  color: #909090;
+  height: 5rem;
+  z-index: 250;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all .2s;
+}
+
+.main-header .visible {
+  transform: translateZ(0);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.main-header .container {
+  max-width: 960px;
+  min-width: 960px;
+  margin: auto;
+}
+
+.logo {
+  margin-right: 2rem;
+}
+
+.logo-img {
+  border-style: none;
+}
+
+.nav-menu ul{
+  background-color: white;
+  border-bottom: 0 solid white !important;
+  /*margin-top: -0.3rem;*/
+}
+
+.nav-menu ul li{
+  font-size: 1.33rem;
+  border-bottom: 0 solid white !important;
+  /*top: 12px !important;*/
+}
+
+.header-login {
+  padding-right: 0;
+}
+
+.header-register {
+  padding: 0;
+}
+
+.nav-menu ul li:hover{
+  border-bottom: 0 solid white !important;
+  background-color: white !important;
+}
+
+.nav-menu button{
+  margin-left: 0 !important;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.contribute {
+
+}
+
+.contribute:after{
+  content: "|";
+  position: absolute;
+  color: hsla(0,0%,59%,.4);
+  left: 100%;
+  z-index: 1;
+}
+
+.login-btn {
+
+}
+
+.login-btn:after {
+  content: "\B7";
+  margin: 0 .4rem;
+}
+
+.portrait {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  background-position: 50%;
+  background-size: cover;
+  margin-bottom: -8px;
+}
