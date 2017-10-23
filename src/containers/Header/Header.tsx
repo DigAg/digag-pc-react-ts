@@ -36,7 +36,7 @@ class Header extends React.Component<HeaderProps, State> {
     //     token && this.props.currentUserAction(token);
     // }
 
-    handleSelect = ({key}: any) => {
+    handleSelect = ({key}: {key: string}) => {
         switch (key) {
             case 'edit':
                 // this.props.history.push('/submit-entry');
@@ -82,11 +82,11 @@ class Header extends React.Component<HeaderProps, State> {
         }));
     };
 
-    handleInput = (value: any) => {
+    handleInput = (value: HTMLInputElement) => {
         this.setState({searchInput: value.target.value});
     };
 
-    handleCommand = ({key}: any) => {
+    handleCommand = ({key}: {key: string}) => {
         switch (key) {
             case 'index':
                 // this.props.history.push(`/user/${this.props.currentUser.username}`);
