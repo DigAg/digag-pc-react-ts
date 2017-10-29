@@ -4,9 +4,12 @@
 import * as React from 'react';
 import {Menu, Input, Icon, Dropdown, message} from 'antd';
 import './Header.css';
+import LoginDialog from "../../components/Header/LoginDialog";
 
 export interface HeaderProps {
     currentUser?: any;
+    auth?: any;
+    loginActions?: any;
 }
 
 type State = {
@@ -29,6 +32,8 @@ class Header extends React.Component<HeaderProps, State> {
 
     static propTypes: {
         currentUser: any;
+        auth: any;
+        loginActions: any;
     };
 
     // componentWillMount() {
@@ -82,7 +87,7 @@ class Header extends React.Component<HeaderProps, State> {
         }));
     };
 
-    handleInput = (value: HTMLInputElement) => {
+    handleInput = (value: any) => {
         this.setState({searchInput: value.target.value});
     };
 
@@ -168,10 +173,10 @@ class Header extends React.Component<HeaderProps, State> {
                                     {/*registerActions={this.props.registerActions} users={this.props.users}*/}
                                     {/*onRedirect={this.handleRedirect}*/}
                     {/*/>*/}
-                    {/*<LoginDialog visible={this.state.loginDialog} onClose={this.handleLoginDialogClose()}*/}
-                                 {/*loginActions={this.props.loginActions} auth={this.props.auth}*/}
-                                 {/*onRedirect={this.handleRedirect}*/}
-                    {/*/>*/}
+                    <LoginDialog visible={this.state.loginDialog} onClose={this.handleLoginDialogClose()}
+                                 loginActions={this.props.loginActions} auth={this.props.auth}
+                                 onRedirect={this.handleRedirect}
+                    />
                 </header>
             </div>
         );

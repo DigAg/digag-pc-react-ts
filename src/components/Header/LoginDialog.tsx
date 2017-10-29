@@ -1,34 +1,42 @@
 /**
- * Created by Yuicon on 2017/6/30.
+ * Created by Yuicon on 2017/10/29.
  */
-import React, {Component} from 'react';
+import * as React from 'react';
 import {Form, Icon, Input, Button, Modal, message} from 'antd';
+import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 const FormItem = Form.Item;
-const createForm = Form.create;
 
-@createForm()
-export default class LoginDialog extends Component {
+export interface LoginProps {
+  visible: boolean;
+  onClose: () => void;
+  loginActions: any;
+  auth: any;
+  onRedirect: () => void;
+}
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-    };
-  }
+type State = {
+  loading: boolean,
+};
 
-  componentWillReceiveProps(nextProps) {
+class LoginDialog extends React.Component<LoginProps & {form: WrappedFormUtils}, State> {
+
+  state: State = {
+    loading: false,
+  };
+
+  componentWillReceiveProps(nextProps: any) {
     console.log(nextProps);
-    if (nextProps.auth.get('token') && this.props.visible) {
+    if (nextProps.auth && nextProps.auth.get('token') && this.props.visible) {
       this.props.onClose();
       message.success('登陆成功');
-    } else if (nextProps.auth.get('error') && this.props.visible) {
+    } else if (nextProps.auth && nextProps.auth.get('error') && this.props.visible) {
       message.error(nextProps.auth.get('error'));
     }
     this.setState({loading: false});
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e: any) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -78,10 +86,10 @@ export default class LoginDialog extends Component {
               登录
             </Button>
           </Form.Item>
-          <Button type="text" onClick={this.handleRegister}>
+          <Button type="ghost" onClick={this.handleRegister}>
             没有帐号？注册
           </Button>
-          <Button style={{float: 'right'}} type="text" onClick={this.handleResetPassWord}>
+          <Button style={{float: 'right'}} type="ghost" onClick={this.handleResetPassWord}>
             忘记密码
           </Button>
         </Form>
@@ -89,3 +97,5 @@ export default class LoginDialog extends Component {
     )
   }
 }
+
+export default Form.create<LoginProps>()(LoginDialog);
