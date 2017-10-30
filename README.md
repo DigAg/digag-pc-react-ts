@@ -47,6 +47,7 @@ digag
 #### 前端技术:
 技术 | 名称
 ----|------
+TypeScript | JavaScript的一个超集
 React | 前端框架  
 Redux | 状态管理  
 Redux-Sagas | Redux异步操作中间件
