@@ -5,11 +5,14 @@ import * as React from 'react';
 import {Menu, Input, Icon, Dropdown, message} from 'antd';
 import './Header.css';
 import LoginDialog from "../../components/Header/LoginDialog";
+import RegisterDialog from "../../components/Header/RegisterDialog";
 
 export interface HeaderProps {
     currentUser?: any;
     auth?: any;
     loginActions?: any;
+    registerActions?: any;
+    users?: any;
 }
 
 type State = {
@@ -33,7 +36,9 @@ class Header extends React.Component<HeaderProps, State> {
     static propTypes: {
         currentUser: any;
         auth: any;
+        users: any;
         loginActions: any;
+        registerActions: any;
     };
 
     // componentWillMount() {
@@ -169,10 +174,10 @@ class Header extends React.Component<HeaderProps, State> {
                             </Menu>
                         </div>
                     </div>
-                    {/*<RegisterDialog visible={this.state.registerDialog} onClose={this.handleRegisterDialogClose()}*/}
-                                    {/*registerActions={this.props.registerActions} users={this.props.users}*/}
-                                    {/*onRedirect={this.handleRedirect}*/}
-                    {/*/>*/}
+                    <RegisterDialog visible={this.state.registerDialog} onClose={this.handleRegisterDialogClose()}
+                                    registerActions={this.props.registerActions} users={this.props.users}
+                                    onRedirect={this.handleRedirect}
+                    />
                     <LoginDialog visible={this.state.loginDialog} onClose={this.handleLoginDialogClose()}
                                  loginActions={this.props.loginActions} auth={this.props.auth}
                                  onRedirect={this.handleRedirect}

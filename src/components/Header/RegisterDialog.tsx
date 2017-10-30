@@ -1,33 +1,41 @@
 /**
  * Created by Yuicon on 2017/6/25.
  */
-import React, {Component} from 'react';
+import * as React from 'react';
 import {Form, Icon, Input, Button, Modal, message} from 'antd';
+import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 const FormItem = Form.Item;
-const createForm = Form.create;
 
-@createForm()
-export default class RegisterDialog extends Component {
+export interface RegisterProps {
+  visible: boolean;
+  onClose: () => void;
+  registerActions: any;
+  users: any;
+  onRedirect: () => void;
+}
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-    };
-  }
+type State = {
+  loading: boolean,
+};
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.users.get('saveSuccess') && this.props.visible) {
+class RegisterDialog extends React.Component<RegisterProps & {form: WrappedFormUtils}, State> {
+
+  state: State = {
+    loading: false,
+  };
+
+  componentWillReceiveProps(nextProps: any) {
+    if (nextProps.users && nextProps.users.get('saveSuccess') && this.props.visible) {
       message.success('注册成功');
       this.props.onClose();
-    } else if (nextProps.users.get('error') && this.props.visible) {
+    } else if (nextProps.users && nextProps.users.get('error') && this.props.visible) {
       message.error('注册失败');
     }
     this.setState({loading: false});
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e: any) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -82,7 +90,7 @@ export default class RegisterDialog extends Component {
             </Button>
           </Form.Item>
           <Form.Item style={{marginBottom: '10px', textAlign: 'center'}}>
-            <Button type="text" onClick={this.handleLogin}>
+            <Button type="ghost" onClick={this.handleLogin}>
               已有帐号?登陆
             </Button>
           </Form.Item>
@@ -91,3 +99,5 @@ export default class RegisterDialog extends Component {
     )
   }
 }
+
+export default Form.create<RegisterProps>()(RegisterDialog);
